@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 
-const Main = ({ activeNote, onUpdateNote }) => {
+const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
   const onEditField = (field, value) => {
     onUpdateNote({
       ...activeNote,
@@ -10,6 +10,12 @@ const Main = ({ activeNote, onUpdateNote }) => {
   };
 
   if (!activeNote) return <div className="no-active-note">No Active Note</div>;
+
+  const handleDeleteClick = () => {
+    if (window.confirm("Are you sure you want to delete this note?")) {
+      onDeleteNote(activeNote.id);
+    }
+  };
 
   return (
     <div className="app-main">
@@ -33,7 +39,7 @@ const Main = ({ activeNote, onUpdateNote }) => {
         </div>
         <div className="note-buttons">
           <button>Save</button>
-          <button>Delete</button>
+          <button class = "delete-button" onlick = {handleDeleteClick}>Delete</button>
         </div>
       </div>
       <div class = "text-editing">

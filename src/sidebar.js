@@ -1,7 +1,6 @@
 const Sidebar = ({
     notes,
     onAddNote,
-    onDeleteNote,
     activeNote,
     setActiveNote,
   }) => {
@@ -21,7 +20,6 @@ const Sidebar = ({
             >
               <div className="sidebar-note-title">
                 <strong>{title}</strong>
-                <button onClick={(e) => onDeleteNote(id)}>Delete</button>
               </div>
   
               <p>{body && body.substr(0, 100) + "..."}</p>

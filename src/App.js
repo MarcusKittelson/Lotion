@@ -64,12 +64,11 @@ function App() {                                             // create App compo
         <Sidebar
           notes={notes}
           onAddNote={onAddNote}
-          onDeleteNote={onDeleteNote}
           activeNote={activeNote}
           setActiveNote={setActiveNote}
         />
       )}
-      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
+      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} onDeleteNote = {onDeleteNote} />
       </div>
   );
 }
