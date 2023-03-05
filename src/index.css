@@ -6,7 +6,7 @@ body,
   height: 100vh;
   overflow: hidden;
   font-size: 16px;
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
 .head {
@@ -14,24 +14,40 @@ body,
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 70px;
   display: flex;
   justify-content: center;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 60px;
+  margin-bottom: 70px;
+}
+
+.head > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .head h1 {
   margin: 0;
   text-align: center;
   flex-grow: 1;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.head p {
+  margin-top: 0;
 }
 
 .head button {
+  position: absolute;
+  top: 10;
+  left: 0;
   text-align: left;
-  margin-left: 10px;
-  font-size: 25px;
+  margin-left: 20px;
+  margin-top: 15px;
+  font-size: 30px;
 }
 
 
@@ -65,6 +81,9 @@ button:hover {
   display: flex;
   justify-content: space-between;
   padding: 25px;
+}
+.app-sidebar-header button {
+  font-size: 35px;
 }
 .app-sidebar-header h1 {
   margin: 0;
@@ -142,6 +161,7 @@ textarea {
 .app-main-note-edit input {
   height: 50px;
   font-size: 2rem;
+  border: none;
 }
 
 /* Preview */
@@ -160,4 +180,34 @@ textarea {
   padding: 0 25px 25px 25px;
   font-size: 1rem;
   line-height: 2rem;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.note-header input {
+   font-size: 20px;
+   border: none;
+}
+
+.note-meta {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.note-buttons {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.note-buttons button {
+  margin-left: 8px;
 }

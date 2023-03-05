@@ -11,7 +11,7 @@ const Sidebar = ({
       <div className="app-sidebar">
         <div className="app-sidebar-header">
           <h1>Notes</h1>
-          <button onClick={onAddNote}>Add</button>
+          <button onClick={onAddNote}>+</button>
         </div>
         <div className="app-sidebar-notes">
           {sortedNotes.map(({ id, title, body, lastModified }, i) => (
@@ -26,7 +26,7 @@ const Sidebar = ({
   
               <p>{body && body.substr(0, 100) + "..."}</p>
               <small className="note-meta">
-                Last Modified{" "}
+                Last Modified:{" "}
                 {new Date(lastModified).toLocaleDateString("en-GB", {
                   hour: "2-digit",
                   minute: "2-digit",

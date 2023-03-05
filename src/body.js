@@ -13,7 +13,7 @@ const Main = ({ activeNote, onUpdateNote }) => {
 
   return (
     <div className="app-main">
-      <div className="app-main-note-edit">
+      <div className="note-header">
         <input
           type="text"
           id="title"
@@ -22,6 +22,24 @@ const Main = ({ activeNote, onUpdateNote }) => {
           onChange={(e) => onEditField("title", e.target.value)}
           autoFocus
         />
+        <div className="note-meta">
+          <span>
+            Last Modified:{" "}
+            {new Date(activeNote.lastModified).toLocaleDateString("en-GB", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </span>
+        </div>
+        <div className="note-buttons">
+          <button>Save</button>
+          <button>Delete</button>
+        </div>
+      </div>
+      <div class = "text-editing">
+        <button>Bold</button>
+      </div>
+      <div className="app-main-note-edit">
         <textarea
           id="body"
           placeholder="Write your note here..."
