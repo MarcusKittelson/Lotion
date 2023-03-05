@@ -1,6 +1,10 @@
-import ReactMarkdown from "react-markdown";
+import React, { useState } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
+  const [editMode, setEditMode] = useState(true);
+
   const onEditField = (field, value) => {
     onUpdateNote({
       ...activeNote,
@@ -9,10 +13,18 @@ const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
     });
   };
 
+  const handleSaveClick = () => {
+    setEditMode(false);
+  };
+
+  const handleEditClick = () => {
+    setEditMode(true);
+  };
+
   if (!activeNote) return <div className="no-active-note">No Active Note</div>;
 
   const handleDeleteClick = () => {
-    if (window.confirm("Are you sure you want to delete this note?")) {
+    if (window.confirm('Are you sure you want to delete this note?')) {
       onDeleteNote(activeNote.id);
     }
   };
@@ -25,40 +37,41 @@ const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
           id="title"
           placeholder="Note Title"
           value={activeNote.title}
-          onChange={(e) => onEditField("title", e.target.value)}
+          onChange={(e) => onEditField('title', e.target.value)}
           autoFocus
         />
         <div className="note-meta">
           <span>
-            Last Modified:{" "}
-            {new Date(activeNote.lastModified).toLocaleDateString("en-GB", {
-              hour: "2-digit",
-              minute: "2-digit",
+            Last Modified:{' '}
+            {new Date(activeNote.lastModified).toLocaleDateString('en-GB', {
+              hour: '2-digit',
+              minute: '2-digit',
             })}
           </span>
         </div>
         <div className="note-buttons">
-          <button>Save</button>
-          <button class = "delete-button" onlick = {handleDeleteClick}>Delete</button>
+          {editMode ? (
+            <button onClick={handleSaveClick}>Save</button>
+          ) : (
+            <button onClick={handleEditClick}>Edit</button>
+          )}
+          <button className="delete-button" onClick={handleDeleteClick}>
+            Delete
+          </button>
         </div>
       </div>
-      <div class = "text-editing">
-        <button>Bold</button>
-      </div>
-      <div className="app-main-note-edit">
-        <textarea
-          id="body"
-          placeholder="Write your note here..."
-          value={activeNote.body}
-          onChange={(e) => onEditField("body", e.target.value)}
-        />
-      </div>
-      <div className="app-main-note-preview">
-        <h1 className="preview-title">{activeNote.title}</h1>
-        <ReactMarkdown className="markdown-preview">
-          {activeNote.body}
-        </ReactMarkdown>
-      </div>
+      {editMode ? (
+        <div className="app-main-note-edit">
+          <ReactQuill
+            value={activeNote.body}
+            onChange={(value) => onEditField('body', value)}
+          />
+        </div>
+      ) : (
+        <div className="app-main-note-display">
+          <div className="ql-editor" dangerouslySetInnerHTML={{ __html: activeNote.body }}></div>
+        </div>
+      )}
     </div>
   );
 };

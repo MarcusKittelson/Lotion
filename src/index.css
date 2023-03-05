@@ -213,3 +213,8 @@ textarea {
 .note-buttons button {
   margin-left: 8px;
 }
+
+.ql-editor {
+  border: none;
+}
+
