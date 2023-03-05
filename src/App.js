@@ -46,19 +46,26 @@ function App() {
     return notes.find(({ id }) => id === activeNote);
   };
 
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
+
   return (
     <div className="App">
       <div className = "head">
-        <button>&#9776;</button>
+        <button onClick={toggleSidebar}>&#9776;</button>
         <h1>Lotion</h1>
-      </div>
-      <Sidebar
-        notes={notes}
-        onAddNote={onAddNote}
-        onDeleteNote={onDeleteNote}
-        activeNote={activeNote}
-        setActiveNote={setActiveNote}
-      />
+        </div>
+      {sidebarVisible && ( // conditionally render Sidebar component
+        <Sidebar
+          notes={notes}
+          onAddNote={onAddNote}
+          onDeleteNote={onDeleteNote}
+          activeNote={activeNote}
+          setActiveNote={setActiveNote}
+        />
+      )}
       <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
     </div>
   );
