@@ -59,10 +59,10 @@ button {
   font-size: inherit;
   font-family: inherit;
   cursor: pointer;
-  color: #08c;
+  color: rgb(0, 204, 120);
 }
 button:hover {
-  color: #04c;
+  color: rgb(0, 75, 45);
 }
 
 .App {
@@ -114,7 +114,7 @@ button:hover {
 }
 .app-sidebar-note.active,
 .app-sidebar-note.active small {
-  background: #08c;
+  background: rgb(0, 204, 120);
   color: white;
 }
 
