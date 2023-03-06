@@ -40,8 +40,8 @@ const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
           onChange={(e) => onEditField('title', e.target.value)}
           autoFocus
         />
-        <div className="note-meta">
-          <span>
+        <div className= "note-meta">
+          <span class = "time">
             Last Modified:{' '}
             {new Date(activeNote.lastModified).toLocaleDateString('en-GB', {
               hour: '2-digit',
