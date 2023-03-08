@@ -3,7 +3,7 @@ import uuid from "react-uuid";               // import library that generates UU
 import "./index.css";                        // import global styles
 import Main from "./body";                   // import Main component from body.js
 import Sidebar from "./sidebar";             // import Sidebar component from sidebar.js
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {                                             // create App component
   const [notes, setNotes] = useState(
