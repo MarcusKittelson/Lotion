@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { useParams } from "react-router-dom";
 
 const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
   const [editMode, setEditMode] = useState(true);
@@ -15,6 +16,7 @@ const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
   }, [activeNote]);
 
   const onEditField = (field, value) => {
+    window.history.replaceState( {} , 'edit', '/notes/edit' );
     if (editMode) {
       if (field === 'title') {
         setTitle(value);
@@ -35,6 +37,7 @@ const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
   };
 
   const handleEditClick = () => {
+    window.history.replaceState( {} , 'edit', '/notes/edit' );
     setEditMode(true);
   };
 

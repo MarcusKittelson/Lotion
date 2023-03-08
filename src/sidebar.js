@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 const Sidebar = ({ notes, onAddNote, activeNote, setActiveNote }) => {
   const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified);
 

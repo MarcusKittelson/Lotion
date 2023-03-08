@@ -3,6 +3,7 @@ import uuid from "react-uuid";               // import library that generates UU
 import "./index.css";                        // import global styles
 import Main from "./body";                   // import Main component from body.js
 import Sidebar from "./sidebar";             // import Sidebar component from sidebar.js
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {                                             // create App component
   const [notes, setNotes] = useState(
@@ -29,6 +30,8 @@ function App() {                                             // create App compo
   const onDeleteNote = (noteId) => {                         // function to delete a note
     setNotes(notes.filter(({ id }) => id !== noteId));       // filter out the note with the given ID from the notes array
   };
+
+  window.history.replaceState( {} , 'notes', '/notes' );
 
   const onUpdateNote = (updatedNote) => {                    // function to update a note
     const updatedNotesArr = notes.map((note) => {
