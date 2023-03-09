@@ -31,8 +31,6 @@ function App() {                                             // create App compo
     setNotes(notes.filter(({ id }) => id !== noteId));       // filter out the note with the given ID from the notes array
   };
 
-  window.history.replaceState( {} , 'notes', '/notes' );
-
   const onUpdateNote = (updatedNote) => {                    // function to update a note
     const updatedNotesArr = notes.map((note) => {
       if (note.id === updatedNote.id) {                      // if the ID of the current note matches the ID of the updated note
