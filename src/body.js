@@ -16,7 +16,6 @@ const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
   }, [activeNote]);
 
   const onEditField = (field, value) => {
-    window.history.replaceState( {} , 'edit', '/notes/edit' );
     if (editMode) {
       if (field === 'title') {
         setTitle(value);
@@ -37,7 +36,6 @@ const Main = ({ activeNote, onUpdateNote, onDeleteNote }) => {
   };
 
   const handleEditClick = () => {
-    window.history.replaceState( {} , 'edit', '/notes/edit' );
     setEditMode(true);
   };
 
